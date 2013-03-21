@@ -1,0 +1,85 @@
+﻿CREATE TABLE Games
+( gameID INTEGER,
+  year INTEGER,
+  summer BOOLEAN,
+  cityID INTEGER,
+  PRIMARY KEY (gameID),
+  FOREIGN KEY (cityID) REFERENCES Cities
+)
+
+CREATE TABLE Cities
+( cityID INTEGER,
+  name CHAR(128),
+  countryID INTEGER,
+  PRIMARY KEY (cityID),
+  FOREIGN KEY (countryID) REFERENCES Countries
+)
+
+CREATE TABLE Countries
+( countryID INTEGER,
+  name CHAR(128),
+  iocCode CHAR(4),
+  PRIMARY KEY (country_id)
+)
+
+CREATE TABLE Athletes
+( athleteID INTEGER,
+  name CHAR(128),
+  PRIMARY KEY (athleteID)
+)
+
+CREATE TABLE Qualifications
+( qualificationID INTEGER,
+  gameID INTEGER,
+  athleteID INTEGER,
+  countryID INTEGER,
+  PRIMARY KEY (qualificationID),
+  UNIQUE (gameID, athleteID)
+  -- todo ON DELETE... sur athletes et games (double weak entity)
+  -- todo assurer la cohérence entre le lien qualifications-games et
+  --      le lien qualifications-events-games
+)
+
+CREATE TABLE Events
+( eventID INTEGER,
+  name CHAR(128),
+  gameID INTEGER,
+  disciplineID INTEGER,
+  goldMedallist INTEGER,
+  silverMedallist INTEGER,
+  bronzeMedallist INTEGER,
+  exAequo12 BOOLEAN,
+  exAequo23 BOOLEAN,  
+  PRIMARY KEY (eventID),
+  FOREIGN KEY (gameID) REFERENCES Games,
+  FOREIGN KEY (disciplineID) REFERENCES Sports,
+  FOREIGN KEY (goldMedallist) REFERENCES Qualifications(qualificationID)
+  FOREIGN KEY (silverMedallist) REFERENCES Qualifications(qualificationID)
+  FOREIGN KEY (bronzeMedallist) REFERENCES Qualifications(qualificationID)
+  CHECK (goldMedallist != silverMedallist)
+  CHECK (goldMedallist != bronzeMedallist)
+  CHECK (silverMedallist != bronzeMedallist)
+  -- todo contrainte sur les médaille (participants seulement)
+)
+
+CREATE TABLE Competes
+( eventID INTEGER,
+  qualificationID INTEGER,
+  PRIMARY KEY (eventID, qualificationID),
+  FOREIGN KEY eventID REFERENCES Events,
+  FOREIGN KEY qualificationID REFERENCES Qualifications
+)
+
+CREATE TABLE Disciplines
+( disciplineID INTEGER,
+  name CHAR(128),
+  sportID INTEGER,
+  PRIMARY_KEY (disciplineID),
+  FOREIGN_KEY (sportID) REFERENCES Sports
+)
+
+CREATE TABLE Sports
+( sportID INTEGER,
+  name CHAR(128),
+  PRIMARY_KEY (sportID)
+)
