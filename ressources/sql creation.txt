@@ -75,7 +75,7 @@ CREATE TABLE Admissions -- aggregation Admission /relation IsAdmitted
   UNIQUE (gameID, athleteID)
 )
 
-CREATE TABLE Results  -- relation Competes
+CREATE TABLE Participations  -- relation Participations
 (
   admissionID INTEGER,
   eventID INTEGER,
