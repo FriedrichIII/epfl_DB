@@ -1,0 +1,35 @@
+﻿DESIGN REMARKS:
+
+Required extra checks:
+
+DESIGN CHOICES:
+
+Admission:
+The use of admission in addition to athlete allows the management of cases where the athlete participates to several games for different countries (change of country or country modification like USSR, Yougoslavia etc.).
+
+Results table:
+Extra constraints:
+- when adding a row, verify that the new row:
+  is before every disqualified one if non-disqualified
+  is after every non-disqualified if disqualified
+- when adding a row, verify that the Admission's game
+  correspond to the event's game
+- when adding a row, verify that all the rankings before the one given
+  appear
+- when deleting a row, decrement all the ranking that are above it's one
+
+We decided to use a result table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information). With common constraints and the ones described above, we can avoid that:
+1. more than one medal of each kind being attributed unless there is an ex aequo
+2. a medal is not attributed
+3. a medal is attributed to someone that did not participate to the event
+	The only drawback is that finding a true ranking when ex aequo happens can require several queries: 
+To get the true ranking of an admission for a particular event, one must first search for its record using admissionID and eventID then check if exAequo is true. If not, the ranking column indicates the true ranking, otherwise one must look for the record with same eventID and ranking of one less than the other and carry on until exAequo is false. The ranking of the first record where exAequo is false if the true ranking of the previous one.
+Note: the first one in the ranking order of an ex aequo group is not marked as ex aequo. Only the ones who "lost" ranking are marked.
+		
+No cascade behaviour for foreign keys:
+We left the default (restrict) behaviour for our foreign key. The reason why is that where there is a good reason to add cascade (e.g. between result and event or between discipline and sport), the risk of deleting a lot of data is not balanced by the ease of using cascade. Moreover, there is practically no reason to deletr elements in this table since it's role is mostly to record an history of olympic games.
+
+Enum-like entities:
+Season and Sport entities are very simple tables that just restrict the choice
+of values in Games resp. Discipline tables.
+

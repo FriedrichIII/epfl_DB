@@ -1,71 +1,56 @@
-﻿-- !!! PAS COMPLET
-
-CREATE TABLE Games
-( gameID INTEGER,
-  year INTEGER,
-  season CHAR(16),
-  countryID INTEGER,
-  city CHAR(128),          -- faire une table city avec le pays?
-  PRIMARY_KEY (gid),
-  FOREIGN_KEY (seasonName) REFERENCES Seasons.
-  FOREIGN_KEY (countryID) REFERENCES Countries
-)
+﻿
+-- Entity tables
 
 CREATE TABLE Seasons
 ( seasonName CHAR(16),
-  PRIMARY_KEY(seasonName)
+  PRIMARY KEY(seasonName)
+)
+
+CREATE TABLE Cities
+( cityID INTEGER,
+  name CHAR(128),
+  countryID INTEGER,    -- relation LiesIn
+  PRIMARY KEY (cityID),
+  FOREIGN KEY (countryID) REFERENCES Countries
 )
 
 CREATE TABLE Countries
 ( countryID INTEGER,
   name CHAR(128),
   iocCode CHAR(4),
-  PRIMARY_KEY (country_id) -- QUESTION pourquoi ioc souligné??
+  PRIMARY KEY (countryID)
+)
+
+CREATE TABLE Games
+( gameID INTEGER,
+  year INTEGER,
+  season CHAR(16),       -- relation InSeason
+  cityID CHAR(128),      -- relation Hosts
+  PRIMARY KEY (gameID),
+  FOREIGN KEY (seasonName) REFERENCES Seasons,
+  FOREIGN KEY (cityID) REFERENCES Cities
 )
 
 CREATE TABLE Athletes
 ( athleteID INTEGER,
   name CHAR(128),
-  countryID INTEGER,     -- On part du principe qu'un athlète
-                         -- représente toujours le même pays?
-						 -- --> table des participations?
-  PRIMARY_KEY (athleteID),
-  FOREIGN_KEY (countryID) REFERENCES Countries
-)
-
--- utiliser une table pour chaque type de médaille?, ex-aequo?
--- ou Event -> goldMedaillist, siverMedaillist, bronzeMedaillist 
--- + ex aequo 12 / ex aequo 23
-CREATE TABLE Medals
-( medalID INTEGER,
-  type CHAR(8),
-  athleteID INTEGER,
-  eventID INTEGER,
-  PRIMARY_KEY (medalID),
-  FOREIGN_KEY (type) REFERENCES MedalTypes,
-  FOREIGN_KEY (athleteID) REFERENCES Athletes.
-  FOREIGN_KEY (eventID) REFERENCES Events
-)
-
-CREATE TABLE MedalTypes
-( type CHAR(8),
-  PRIMARY_KEY (type)
+  PRIMARY KEY (athleteID),
 )
 
 CREATE TABLE Events
 ( eventID INTEGER,
   name CHAR(128),
-  gameID INTEGER,
-  disciplineID INTEGER,
+  gameID INTEGER,         -- relation HappensIn
+  disciplineID INTEGER,   -- relation FromDiscipline
   PRIMARY_KEY (eventID),
   FOREIGN_KEY (gameID) REFERENCES Games,
-  FOREIGN_KEY (disciplineID) REFERENCES Sports
+  FOREIGN_KEY (disciplineID) REFERENCES Disciplines 
 )
 
 CREATE TABLE Disciplines
 ( disciplineID INTEGER,
   name CHAR(128),
-  sportID INTEGER,
+  sportID INTEGER,        -- relation FromSport
   PRIMARY_KEY (disciplineID),
   FOREIGN_KEY (sportID) REFERENCES Sports
 )
@@ -74,4 +59,32 @@ CREATE TABLE Sports
 ( sportID INTEGER,
   name CHAR(128),
   PRIMARY_KEY (sportID)
+)
+
+-- RELATION AND AGGREGATION TABLES
+
+CREATE TABLE Admissions -- aggregation Admission /relation IsAdmitted
+( admissionID INTEGER,
+  gameID INTEGER,
+  athleteID INTEGER,
+  countryID INTEGER,    -- relation Represents
+  PRIMARY KEY (admissionID),
+  FOREIGN KEY (gameID) REFERENCES Games,
+  FOREIGN KEY (athleteID) REFERENCES Athletes,
+  FOREIGN KEY (countryID) REFERENCES Countries,
+  UNIQUE (gameID, athleteID)
+)
+
+CREATE TABLE Results  -- relation Competes
+(
+  admissionID INTEGER,
+  eventID INTEGER,
+  ranking INTEGER,
+  exAequo BOOLEAN,
+  disqualified BOOLEAN,
+  PRIMARY KEY (admissionID, eventID),
+  FOREIGN KEY (admissionID) REFERENCES Admissions,
+  FOREIGN KEY (eventID) REFERENCES Events,
+  CHECK ranking > 0,
+  UNIQUE (ranking)
 )
