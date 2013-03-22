@@ -1,9 +1,25 @@
-﻿
--- Entity tables
-
 CREATE TABLE Seasons
 ( seasonName CHAR(64),
   PRIMARY KEY(seasonName)
+)
+
+CREATE TABLE Sports
+( sportID INTEGER,
+  name CHAR(128),
+  PRIMARY_KEY (sportID)
+)
+
+CREATE TABLE Countries
+( countryID INTEGER,
+  name CHAR(128),
+  iocCode CHAR(4),
+  PRIMARY KEY (countryID)
+)
+
+CREATE TABLE Athletes
+( athleteID INTEGER,
+  name CHAR(128),
+  PRIMARY KEY (athleteID),
 )
 
 CREATE TABLE Cities
@@ -12,13 +28,6 @@ CREATE TABLE Cities
   countryID INTEGER,    -- relation LiesIn
   PRIMARY KEY (cityID),
   FOREIGN KEY (countryID) REFERENCES Countries
-)
-
-CREATE TABLE Countries
-( countryID INTEGER,
-  name CHAR(128),
-  iocCode CHAR(4),
-  PRIMARY KEY (countryID)
 )
 
 CREATE TABLE Games
@@ -32,10 +41,12 @@ CREATE TABLE Games
   FOREIGN KEY (cityID) REFERENCES Cities
 )
 
-CREATE TABLE Athletes
-( athleteID INTEGER,
+CREATE TABLE Disciplines
+( disciplineID INTEGER,
   name CHAR(128),
-  PRIMARY KEY (athleteID),
+  sportID INTEGER,        -- relation FromSport
+  PRIMARY_KEY (disciplineID),
+  FOREIGN_KEY (sportID) REFERENCES Sports
 )
 
 CREATE TABLE Events
@@ -48,19 +59,9 @@ CREATE TABLE Events
   FOREIGN_KEY (disciplineID) REFERENCES Disciplines 
 )
 
-CREATE TABLE Disciplines
-( disciplineID INTEGER,
-  name CHAR(128),
-  sportID INTEGER,        -- relation FromSport
-  PRIMARY_KEY (disciplineID),
-  FOREIGN_KEY (sportID) REFERENCES Sports
-)
 
-CREATE TABLE Sports
-( sportID INTEGER,
-  name CHAR(128),
-  PRIMARY_KEY (sportID)
-)
+
+
 
 -- RELATION AND AGGREGATION TABLES
 
