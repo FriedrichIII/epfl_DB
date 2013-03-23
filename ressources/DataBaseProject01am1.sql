@@ -37,7 +37,7 @@ CREATE TABLE Games
 ( gameID INTEGER,
   year INTEGER,
   seasonName CHAR(64),   -- relation InSeason
-  cityID INTEGER,      -- relation Hosts
+  cityID INTEGER,        -- relation Hosts
   PRIMARY KEY (gameID),
   UNIQUE (seasonName, year),
   FOREIGN KEY (seasonName) REFERENCES Seasons,
@@ -53,8 +53,8 @@ CREATE TABLE Athletes
 CREATE TABLE Events
 ( eventID INTEGER,
   name CHAR(128),
-  gameID INTEGER,         -- relation HappensIn
-  disciplineID INTEGER,   -- relation FromDiscipline
+  gameID INTEGER NOT NULL,        -- relation HappensIn
+  disciplineID INTEGER NOT NULL,  -- relation FromDiscipline
   PRIMARY KEY (eventID),
   FOREIGN KEY (gameID) REFERENCES Games,
   FOREIGN KEY (disciplineID) REFERENCES Disciplines 
@@ -70,8 +70,8 @@ CREATE TABLE Events
 --            the table as a whole
 CREATE TABLE Teams -- includes relation Participates
 ( teamID INTEGER,
-  countryID INTEGER,
-  eventID INTEGER,
+  countryID INTEGER NOT NULL,
+  eventID INTEGER NOT NULL,
   position INTEGER,
   exAequo INTEGER,      -- actually boolean
   disqualified INTEGER, -- actually boolean
