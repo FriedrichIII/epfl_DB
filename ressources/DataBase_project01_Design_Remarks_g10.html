@@ -1,0 +1,80 @@
+<h1>
+	DESIGN REMARKS</h1>
+<h2>
+	Required extra checks</h2>
+<h4>
+	Membership table</h4>
+<p>
+	When adding an athlete to the Membership table, one needs to check</p>
+<ul>
+	<li>
+		that the athlete does not have two teams representing different countries for the same games.</li>
+	<li>
+		that the ahtlete is not a member of two different teams participating in the same event.</li>
+</ul>
+<h4>
+	Team table, participation relation</h4>
+<p>
+	When setting the position of a team, one has to follow this procedure</p>
+<ul>
+	<li>
+		Check whether the element with wanted position is free (for the event)</li>
+	<li>
+		if yes put it with given position</li>
+	<li>
+		if no, check whether the row with this position is exAequo and this is exAequo</li>
+	<li>
+		if yes, increment the position and try again</li>
+	<li>
+		if no, insertion failed</li>
+</ul>
+<h2>
+	Design Choices</h2>
+<h4>
+	Team table</h4>
+<p>
+	The use of team table allows the management of a team recieving a medal (rather than giving a medal to each athlete of the team, in football teams for example).</p>
+<p>
+	This solution can still be used for an athlete to participate alone, being a team of one persone.</p>
+<p>
+	We also choose to make a team represent a country. By this way we can manage cases where athletes participate to several games for different countries (change of country or country modification like USSR, Yougoslavia etc.). The disavantage of this solution is to have to check that an athlete does not represents differents countries for the same games or takes part to the same event in different teams.</p>
+<h4>
+	Participation table</h4>
+<p>
+	We decided to use a participation table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information).</p>
+<p>
+	With common constraints and the ones described above, we can avoid that:</p>
+<ul>
+	<li>
+		more than one medal of each kind being attributed unless there is an ex aequo.</li>
+	<li>
+		a medal is not attributed</li>
+	<li>
+		a medal is attributed to someone that did not participate to the event</li>
+</ul>
+<p>
+	The only drawback is that finding a true ranking when ex aequo happens can require several queries:</p>
+<p>
+	To get the true ranking of a team for a particular event, one must :</p>
+<ul>
+	<li>
+		search for its record using teamId and eventID then check if exAequo is true.</li>
+	<li>
+		If yes, the ranking is given by the true ranking of the first previous non-disqualified entry of the same event.</li>
+	<li>
+		Otherwise the true ranking is given by the count of smaller non-disqualified position + 1.</li>
+</ul>
+<p>
+	Note: the first one in the ranking order of an ex aequo group is not marked as ex aequo. Only the ones who &quot;lost&quot; ranking are marked. There is also no constraint that the positions have to be consecutive. It&#39;s not necessary (but it would help to solve ex-aequo cases) and it allows to fill the table in any order.</p>
+<h4>
+	IOC code</h4>
+<p>
+	We assume that each country has an ioc code and that it is unique. This allows us to use it as an index for the countries table</p>
+<h4>
+	No cascade behaviour for foreign keys</h4>
+<p>
+	We left the default (restrict) behaviour for our foreign key. The reason is that there is a good reason to add cascade (e.g. between participation and event or between discipline and sport), the risk of deleting a lot of data is not balanced by the ease of using cascade. Moreover, there is practically no reason to delete elements in this table since it&#39;s role is mostly to record an history of olympic games.</p>
+<h4>
+	Enum-like entities</h4>
+<p>
+	Season and Sport entities are very simple tables that just restrict the choice of values in Games resp. Discipline tables.</p>
