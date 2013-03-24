@@ -6,8 +6,7 @@ CREATE TABLE Seasons
   PRIMARY KEY(seasonName)
 )
 
-CREATE TABLE Cities
-( cityID INTEGER,
+CREATE TABLE Cities( cityID INTEGER,
   name CHAR(128),
   countryID INTEGER,    -- relation LiesIn
   PRIMARY KEY (cityID),
@@ -28,7 +27,7 @@ CREATE TABLE Games
   cityID CHAR(128),      -- relation Hosts
   PRIMARY KEY (gameID),
   UNIQUE (season, year),
-  FOREIGN KEY (seasonName) REFERENCES Seasons,
+  FOREIGN KEY (seasonName) REFERENCES Seasons,	
   FOREIGN KEY (cityID) REFERENCES Cities
 )
 
