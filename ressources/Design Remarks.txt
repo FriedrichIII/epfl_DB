@@ -2,6 +2,19 @@
 
 Required extra checks:
 
+Membership table:
+When adding an athlete to the Membership table, one needs to check
+- that the athlete does not have two teams of different countries for the same games.
+- that the ahtlete does not have two different teams of same event.
+
+Team table, participation relation:
+When setting the position of a team, one has to follow this procedure:
+- Check whether the element with wanted position is free (for the event)
+- if yes put it with given position
+- if no, check whether the row with this position is exAequo and this is exAequo
+- if yes, increment the position and try again
+- if no, insertion failed
+
 DESIGN CHOICES:
 
 Admission:
@@ -22,8 +35,8 @@ We decided to use a participation table with whole ranking instead of recording 
 1. more than one medal of each kind being attributed unless there is an ex aequo
 2. a medal is not attributed
 3. a medal is attributed to someone that did not participate to the event
-	The only drawback is that finding a true ranking when ex aequo happens can require several queries: 
-To get the true ranking of an admission for a particular event, one must first search for its record using admissionID and eventID then check if exAequo is true. If not, the ranking column indicates the true ranking, otherwise one must look for the record with same eventID and ranking of one less than the other and carry on until exAequo is false. The ranking of the first record where exAequo is false if the true ranking of the previous one.
+The only drawback is that finding a true ranking when ex aequo happens can require several queries: 
+To get the true ranking of a team for a particular event, one must first search for its record using teamId and eventID then check if exAequo is true. If not, the ranking column indicates the true ranking, otherwise one must look for the record with same eventID and ranking of one less than the other and carry on until exAequo is false. The ranking of the first record where exAequo is false if the true ranking of the previous one.
 Note: the first one in the ranking order of an ex aequo group is not marked as ex aequo. Only the ones who "lost" ranking are marked.
 		
 No cascade behaviour for foreign keys:
