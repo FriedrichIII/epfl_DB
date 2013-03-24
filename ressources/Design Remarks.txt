@@ -23,15 +23,13 @@ The use of team table allows the management of a team recieving a  medal (rather
 We also choose to make a team represent a country. By this way we can manage cases where athletes participate to several games for different countries (change of country or country modification like USSR, Yougoslavia etc.).
 The disavantage of this solution is to have to check that an athlete does not represents differents countries for the same games or takes part to the same event in different teams.
 
-Participation table:
-
-We decided to use a participation table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information). With common constraints and the ones described above, we can avoid that:
+We decided to use a team table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information). With common constraints and the  above, we can avoid that:
 1. more than one medal of each kind being attributed unless there is an ex aequo
 2. a medal is not attributed
 3. a medal is attributed to someone that did not participate to the event
 The only drawback is that finding a true ranking when ex aequo happens can require several queries: 
-To get the true ranking of a team for a particular event, one must first search for its record using teamId and eventID then check if exAequo is true. If yes, the ranking is given by the true ranking of the first previous non-discalified entry of the same event. Otherwise the true ranking is given by the count of smaller non-discalified position + 1.
-Note: the first one in the ranking order of an ex aequo group is not marked as ex aequo. Only the ones who "lost" ranking are marked.
+To get the true ranking of a team for a particular event, one must first search for its record using teamId and eventID then check if exAequo is true. If yes, one must check whether there is an ex aequo team on the direct previous rank. As soon as you don't find any, the last rank found
+    is the team's rank.
 There is also no constraint that the positions have to be continue. It's not necessary (but it would help to solve ex-aequo cases) and it allows to fill the table in any order.
 		
 No cascade behaviour for foreign keys:
