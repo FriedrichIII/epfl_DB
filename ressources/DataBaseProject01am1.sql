@@ -83,7 +83,7 @@ CREATE TABLE Teams -- includes relation Participates
 -- extra check at insertion:
 -- an athlete cannot join two teams of different countries in the same game
 -- an athlete cannot join two teams with the same eventID
-CREATE TABLE MemberShips
+CREATE TABLE Memberships
 ( teamID INTEGER,
   athleteID INTEGER,
   PRIMARY KEY (teamID, athleteID),
