@@ -38,10 +38,8 @@
 	This solution can still be used for an athlete to participate alone, being a team of one persone.</p>
 <p>
 	We also choose to make a team represent a country. By this way we can manage cases where athletes participate to several games for different countries (change of country or country modification like USSR, Yougoslavia etc.). The disavantage of this solution is to have to check that an athlete does not represents differents countries for the same games or takes part to the same event in different teams.</p>
-<h4>
-	Participation table</h4>
 <p>
-	We decided to use a participation table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information).</p>
+	We decided to use a team table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information).</p>
 <p>
 	With common constraints and the ones described above, we can avoid that:</p>
 <ul>
@@ -60,12 +58,12 @@
 	<li>
 		search for its record using teamId and eventID then check if exAequo is true.</li>
 	<li>
-		If yes, the ranking is given by the true ranking of the first previous non-disqualified entry of the same event.</li>
+        As long as the answer is yes, one must continue checking whether there is an ex aequo team on the direct previous rank.</li>
 	<li>
-		Otherwise the true ranking is given by the count of smaller non-disqualified position + 1.</li>
+		As soon as you don't find any, the last rank found with true ex aequo is the team's rank.</li>
 </ul>
 <p>
-	Note: the first one in the ranking order of an ex aequo group is not marked as ex aequo. Only the ones who &quot;lost&quot; ranking are marked. There is also no constraint that the positions have to be consecutive. It&#39;s not necessary (but it would help to solve ex-aequo cases) and it allows to fill the table in any order.</p>
+	Note: There is also no constraint that the positions have to be consecutive. It&#39;s not necessary (but it would help to solve ex-aequo cases) and it allows to fill the table in any order.</p>
 <h4>
 	IOC code</h4>
 <p>
