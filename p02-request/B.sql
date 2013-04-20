@@ -1,0 +1,1 @@
+-- B. Print the names of gold medalists in sports which appeared only once at the Olympics.
