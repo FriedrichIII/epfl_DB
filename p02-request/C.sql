@@ -1,0 +1,1 @@
+--C. For each country print the place where it won its first medal.
