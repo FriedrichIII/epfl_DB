@@ -1,4 +1,3 @@
-﻿name,ioc_code
 Soviet Union,URS
 Equatorial Guinea,GEQ
 Saint Kitts and Nevis,SKN
@@ -8,21 +7,21 @@ Lebanon,LIB
 Syria,SYR
 Seychelles,SEY
 Uruguay,URU
-Oman,
+Oman,OMA
 Thailand,THA
 Namibia,NAM
 Philippines,PHI
 Moldova,MDA
-Malawi,
-Kiribati,
+Malawi,MAW
+Kiribati,KIR
 Lithuania,LTU
 Turkey,TUR
 Pakistan,PAK
-United States Virgin Islands,
+United States Virgin Islands,VIR
 Belarus,BLR
 Ghana,GHA
 South Korea,KOR
-Empire of Japan,
+Empire of Japan,EJA
 Samoa,SAM
 Trinidad and Tobago,TRI
 Sweden,SWE
@@ -31,26 +30,26 @@ China,CHN
 Sudan,SUD
 Niger,NIG
 Panama,PAN
-British Guiana,
+British Guiana,BGU
 Chad,CHA
-South Sudan,
-Liberia,
+South Sudan,SSU
+Liberia,LBE
 Hungary,HUN
 Laos,LAO
 Cameroon,CMR
 Tuvalu,TUV
-Socialist Federal Republic of Yugoslavia,
+Socialist Federal Republic of Yugoslavia,SRY
 Togo,TOG
 Botswana,BOT
 Burundi,BDI
-Bhutan,
+Bhutan,BHU
 Canada,CAN
 Norway,NOR
 Brazil,BRA
 Kazakhstan,KAZ
 Estonia,EST
 Poland,POL
-Rome,
+Rome,ROM
 Morocco,MAR
 Belgium,BEL
 Cook Islands,COK
@@ -58,8 +57,8 @@ Egypt,EGY
 Ukraine,UKR
 Uganda,UGA
 Saint Lucia,LCA
-Holland,
-Libya,
+Holland,HOL
+Libya,LBA
 Independent Olympic Participants,IOP
 Burma,MYA
 Malaysia,MAS
@@ -69,8 +68,8 @@ Republic of Macedonia,MKD
 Spain,ESP
 British Virgin Islands,IVB
 Bolivia,BOL
-Unified Team,
-Commonwealth of Independent States,
+Unified Team,UTA
+Commonwealth of Independent States,CIS
 Grenada,GRN
 India,IND
 Armenia,ARM
@@ -81,12 +80,12 @@ Angola,ANG
 Côte d’Ivoire,CIV
 Cayman Islands,CAY
 Guinea,GUI
-Virgin Islands,
+Virgin Islands,VII
 Iraq,IRQ
 Kenya,KEN
-West Germany,
+West Germany,WGE
 Haiti,HAI
-Serbia and Montenegro,
+Serbia and Montenegro,SEM
 Central African Republic,CAF
 Belize,BIZ
 Austria,AUT
@@ -96,21 +95,21 @@ Switzerland,SUI
 Venezuela,VEN
 Mongolia,MGL
 Uzbekistan,UZB
-Congo,
+Congo,COG
 Comoros,COM
 Czechoslovakia,TCH
 Vietnam,VIE
 Tunisia,TUN
-American Samoa,
+American Samoa,ASA
 Zimbabwe,ZIM
 Rwanda,RWA
 Guam,GUM
 El Salvador,ESA
 Nauru,NRU
-Democratic Republic of the Congo,
-Great Britain,
+Democratic Republic of the Congo,DRC
+Great Britain,GBR
 Nicaragua,NCA
-Rhodesia,
+Rhodesia,RHO
 France,FRA
 Georgia,GEO
 Cuba,CUB
@@ -122,7 +121,7 @@ Saint Vincent and the Grenadines,VIN
 Taiwan,TPE
 Barbados,BAR
 Mauritius,MRI
-State of Palestine,
+State of Palestine,SPA
 Guatemala,GUA
 Guyana,GUY
 Nepal,NEP
@@ -132,12 +131,12 @@ Marshall Islands,MHL
 Djibouti,DJI
 Monaco,MON
 Yemen,YEM
-Kingdom of Yugoslavia,
+Kingdom of Yugoslavia,KYU
 Bahamas,BAH
 Malta,MLT
 New Zealand,NZL
 Eritrea,ERI
-Vanuatu,
+Vanuatu,VAN
 Qatar,QAT
 Paraguay,PAR
 Finland,FIN
@@ -153,7 +152,7 @@ Netherlands Antilles,AHO
 Dominican Republic,DOM
 Dominica,DMA
 Portugal,POR
-Palestinian Territories,
+Palestinian Territories,PAT
 Swaziland,SWZ
 Tanzania,TAN
 Timor-Leste,TLS
@@ -167,13 +166,13 @@ Honduras,HON
 Cyprus,CYP
 Liechtenstein,LIE
 Hong Kong,HKG
-Curaçao,
+Curaçao,CUR
 Jamaica,JAM
 Cape Verde,CPV
-Bohemia,
+Bohemia,BOH
 Burkina Faso,BUR
 Gambia,GAM
-Yugoslavia,
+Yugoslavia,YUG
 Gabon,GAB
 Japan,JPN
 Algeria,ALG
@@ -201,38 +200,37 @@ Slovakia,SVK
 Cambodia,CAM
 Latvia,LAT
 Iran,IRI
-England,
-Sierra Leone,
+England,ENG
+Sierra Leone,SIL
 Montenegro,MNE
-Palestinian territories,
-Scotland,
-Russian Empire,
+Scotland,SCO
+Russian Empire,RUE
 Bermuda,BER
-British West Indies,
+British West Indies,BWI
 Colombia,COL
 Iceland,ISL
-Australasia,
+Australasia,AUA
 Benin,BEN
 Zambia,ZAM
-Mixed team,
+Mixed team,MIX
 North Korea,PRK
 Puerto Rico,PUR
 Antigua and Barbuda,ANT
-Somalia,
-Slovak Republic,
+Somalia,SOM
+Slovak Republic,SLR
 Tonga,TGA
 United Team of Germany,EUA
-German Democratic Republic,"GDR,EUA"
+German Democratic Republic,GDR
 Kuwait,KUW
-Turkmenistan,
-Gold Coast,
+Turkmenistan,TUK
+Gold Coast,GCO
 Senegal,SEN
 São Tomé and Príncipe,STP
 Romania,ROU
 Mali,MLI
 Bangladesh,BAN
 Slovenia,SLO
-Estados Unidos,
+Estados Unidos,ESU
 Greece,GRE
 Nigeria,NGR
 United Kingdom,GBR
