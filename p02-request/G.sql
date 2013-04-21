@@ -1,5 +1,5 @@
 --G. For each Olympic Games print the name of the country with the most participants.
-SELECT g.year, g.season, c.name
+SELECT g.year, g.seasonName, c.name
 FROM Games g, Countries c
 JOIN
 	(SELECT e.gameID, t.iocCode, COUNT(DISTINCT m.athleteID) ac

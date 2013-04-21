@@ -1,4 +1,5 @@
 --C. For each country print the place where it won its first medal.
+-- Convention: Summer year x is earlier than Winter year x
 SELECT c0.name, ctsy.name
 FROM Countries c0, (
 	SELECT ct.name, g0.season, g0.year
@@ -19,3 +20,15 @@ JOIN
 	GROUP BY c.iocCode) cmy
 ON c0.iocCode = cmy.iocCode AND ctsy.year = cmy.year
 -- TODO solve two place for one year (season) problem
+
+
+
+SELECT t.iocCode, MIN(g.year)
+FROM	(SELECT *
+	FROM Team tt
+	WHERE t.rank < 4 AND t.rank > 0) t
+JOIN Events e
+ON e.teamID = t.teamID
+JOIN Games g
+ON e.gameID = g.gameID
+GROUP BY t.iocCode, g.seasonName

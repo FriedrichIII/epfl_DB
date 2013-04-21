@@ -2,7 +2,7 @@
 SELECT c.name
 FROM Countries c
 LEFT OUTER JOIN
-	(SELECT t.iocCode
+	(SELECT DISTINCT t.iocCode
 	FROM Team t
 	WHERE t.rank > 0 and t.rank < 4) Oc
 ON c.iocCode = Oc.iocCode
