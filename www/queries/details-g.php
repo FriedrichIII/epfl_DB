@@ -2,6 +2,7 @@
 <?php
 include 'config.php';
 $id = $_GET['id'];
+try {
 $db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 
 $qry = $db->prepare('
@@ -39,7 +40,7 @@ INNER JOIN teams t ON t.eventID = e.eventID
 INNER JOIN memberships m ON m.teamID = t.teamID
 INNER JOIN athletes a ON a.athleteID = m.athleteID
 INNER JOIN disciplines d ON d.disciplineID = e.disciplineID
-INNER JOIN sports s ON s.sportID = d.disciplineID
+INNER JOIN sports s ON s.sportID = d.sportID
 WHERE g.gameID = \'' . $id . '\' AND t.rank < 4
 ORDER BY s.name, d.name, t.rank, a.name
 ');
@@ -67,5 +68,9 @@ for ($i = 0; $i < $size; $i++) {
 }
 
 $db = null;
+} catch (Exception $e)
+{
+	die('Could not open database, error: ' . $e->getMessage());
+}
 ?>
 

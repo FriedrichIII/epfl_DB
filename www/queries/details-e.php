@@ -1,6 +1,8 @@
 
 <?php
 include 'config.php';
+
+try {
 $id = $_GET['id'];
 $db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 
@@ -59,5 +61,9 @@ for ($i = 0; $i < $size; $i++) {
 }
 
 $db = null;
+}catch (Exception $e)
+{
+	die('Could not open database, error: ' . $e->getMessage());
+}
 ?>
 

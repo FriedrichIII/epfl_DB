@@ -5,7 +5,9 @@ try
 	include 'config.php';
 	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	$qry = $db->prepare('
-SELECT c.name, csm.seasonName
+SELECT coname, iocCode, season, mc
+FROM (
+SELECT c.name AS coname, c.iocCode AS iocCode, csm.seasonName AS season, mc
 FROM Countries c
 JOIN	(SELECT t.iocCode, g.seasonName, COUNT(*) mc
 	FROM 	(SELECT *
@@ -28,8 +30,17 @@ JOIN	(SELECT csm2.seasonName, MAX(csm2.mc) mm
 		ON e2.gameID = g2.gameID
 		GROUP BY t2.iocCode, g2.seasonName) csm2
 	GROUP BY csm2.seasonName) smm
-ON csm.seasonName = smm.seasonName AND csm.mc = smm.mm');
+ON csm.seasonName = smm.seasonName AND csm.mc = smm.mm) final
+ORDER BY season, coname;
+
+	');
 	$qry->execute();
+	
+	$res = $qry->fetchAll();
+	
+	foreach ($res as $r) {
+		echo($r['season'] . ': <a href="details-co.php?id=' . $r['iocCode'] . '">' . $r['coname'] . ' (' . $r['mc'] .  ')</a><br />');
+	}
 }
 catch (Exception $e)
 {

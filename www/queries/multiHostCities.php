@@ -5,14 +5,19 @@ try
 	include 'config.php';
 	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	$qry = $db->prepare('
-SELECT ct.name
-FROM Cities ct
+SELECT ci.name AS ciname
+FROM Cities ci
 JOIN	(SELECT DISTINCT g.cityID
 	FROM Games g
 	GROUP BY g.cityID
 	HAVING COUNT(*) > 1) h
-ON c.cityID = h.citiyID');
+ON ci.cityID = h.cityID
+	');
 	$qry->execute();
+	while($data = $qry->fetch())
+	{
+		echo($data['ciname'] . '<br />');
+	}
 }
 catch (Exception $e)
 {

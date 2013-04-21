@@ -5,10 +5,10 @@ try
 	include 'config.php';
 	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	$qry = $db->prepare('
-SELECT A.name
+SELECT DISTINCT A.name AS aname
 FROM Athletes A
 JOIN	(SELECT M.athleteID
-	FROM Membership M
+	FROM Memberships M
 	JOIN Teams T
 	ON M.teamID = T.teamID
 	JOIN Events E
@@ -16,10 +16,15 @@ JOIN	(SELECT M.athleteID
 	JOIN Games G
 	ON G.gameID = E.gameID
 	WHERE T.rank < 4 AND T.rank > 0
-	GROUP BY M.athleteID
-	HAVING COUNT (DISTINCT G.season) = 2) MM
-ON A.athleteID = MM.athleteID');
+	GROUP BY M.athleteID, G.seasonName
+	HAVING COUNT(*) = 2) MM
+ON A.athleteID = MM.athleteID
+	');
 	$qry->execute();
+	while($data = $qry->fetch())
+	{
+		echo($data['aname'] . '<br />');
+	}
 }
 catch (Exception $e)
 {
