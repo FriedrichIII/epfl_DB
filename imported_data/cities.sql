@@ -1,9 +1,9 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2013 at 08:24 PM
+-- Generation Time: Apr 21, 2013 at 09:35 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `iocCode` char(4) DEFAULT NULL,
   PRIMARY KEY (`cityID`),
   KEY `iocCode` (`iocCode`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `cities`
@@ -52,44 +52,35 @@ INSERT INTO `cities` (`cityID`, `name`, `iocCode`) VALUES
 (11, 'Amsterdam', 'NED'),
 (12, 'Sapporo', 'JPN'),
 (13, 'Stockholm', 'SWE'),
-(14, 'Athens', 'GRE'),
-(15, 'Innsbruck', 'AUT'),
-(16, 'Los Angeles', 'USA'),
-(17, 'Helsinki', 'FIN'),
-(18, 'Squaw Valley', 'USA'),
-(19, 'Berlin', 'GER'),
-(20, 'Vancouver', 'CAN'),
-(21, 'Calgary', 'CAN'),
-(22, 'Tokyo', 'JPN'),
-(23, 'St. Moritz', 'SUI'),
-(24, 'Sydney', 'AUS'),
-(25, 'Seoul', 'KOR'),
-(26, 'Grenoble', 'FRA'),
-(27, 'Atlanta', 'USA'),
-(28, 'Athens', 'GRE'),
-(29, 'Melbourne', 'AUS'),
-(30, 'Salt Lake City', 'USA'),
-(31, 'Garmisch-Partenkirchen', 'AUT'),
-(32, 'Paris', 'FRA'),
-(33, 'Cortina d''Ampezzo', 'ITA'),
-(34, 'Sochi', 'RUS'),
-(35, 'Lake Placid', 'USA'),
-(36, 'Montreal', 'CAN'),
-(37, 'Rome', 'ITA'),
-(38, 'London', 'GBR'),
-(39, 'Antwerp', 'NED'),
-(40, 'Oslo', 'NOR'),
-(41, 'Mexico City', 'MEX'),
-(42, 'Barcelona', 'ESP'),
-(43, 'Nagano', 'JPN'),
-(44, 'Beijing', 'CHN'),
-(45, 'Lillehammer', 'NOR'),
-(46, 'Albertville', 'FRA'),
-(47, 'London', 'GBR'),
-(48, 'Turin', 'ITA'),
-(49, 'Sarajevo', 'YUG'),
-(50, 'Los Angeles', 'USA'),
-(51, 'Chamonix', 'FRA');
+(14, 'Los Angeles', 'USA'),
+(15, 'Helsinki', 'FIN'),
+(16, 'Squaw Valley', 'USA'),
+(17, 'Berlin', 'GER'),
+(18, 'Vancouver', 'CAN'),
+(19, 'Calgary', 'CAN'),
+(20, 'Tokyo', 'JPN'),
+(21, 'Sydney', 'AUS'),
+(22, 'Seoul', 'KOR'),
+(23, 'Grenoble', 'FRA'),
+(24, 'Atlanta', 'USA'),
+(25, 'Melbourne', 'AUS'),
+(26, 'Salt Lake City', 'USA'),
+(27, 'Garmisch-Partenkirchen', 'AUT'),
+(28, 'Cortina d''Ampezzo', 'ITA'),
+(29, 'Sochi', 'RUS'),
+(30, 'Montreal', 'CAN'),
+(31, 'Rome', 'ITA'),
+(32, 'Antwerp', 'NED'),
+(33, 'Oslo', 'NOR'),
+(34, 'Mexico City', 'MEX'),
+(35, 'Barcelona', 'ESP'),
+(36, 'Nagano', 'JPN'),
+(37, 'Beijing', 'CHN'),
+(38, 'Lillehammer', 'NOR'),
+(39, 'Albertville', 'FRA'),
+(40, 'Turin', 'ITA'),
+(41, 'Sarajevo', 'YUG'),
+(42, 'Chamonix', 'FRA');
 
 --
 -- Constraints for dumped tables
