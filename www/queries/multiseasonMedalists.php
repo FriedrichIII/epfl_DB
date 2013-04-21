@@ -17,7 +17,8 @@ JOIN	(SELECT M.athleteID
 	WHERE T.rank < 4 AND T.rank > 0
 	GROUP BY M.athleteID
 	HAVING COUNT (DISTINCT G.season) = 2) MM
-ON A.athleteID = MM.athleteID')
+ON A.athleteID = MM.athleteID');
+	$qry->execute();
 }
 catch (Exception $e)
 {

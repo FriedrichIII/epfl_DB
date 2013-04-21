@@ -10,7 +10,8 @@ JOIN	(SELECT DISTINCT g.cityID
 	FROM Games g
 	GROUP BY g.cityID
 	HAVING COUNT(*) > 1) h
-ON c.cityID = h.citiyID')
+ON c.cityID = h.citiyID');
+	$qry->execute();
 }
 catch (Exception $e)
 {

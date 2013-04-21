@@ -1,5 +1,4 @@
 -- B. Print the names of gold medalists in sports which appeared only once at the Olympics.
--- TODO Is it really sports or disciplines? (sport seems ok)
 SELECT a.name
 FROM Athletes a
 JOIN Membership m
@@ -21,6 +20,4 @@ WHERE t.rank = 1 AND s.sportID in
 	ON d2.sportID = s2.sportID
 	GROUP BY s2.sportID
 	-- TODO appears once: One event or one game?
-	HAVING COUNT(DISTINCT e2.gameID) = 1) 
-	
-	
+	HAVING COUNT(DISTINCT e2.gameID) = 1)

@@ -1,5 +1,4 @@
 --D. Print the name of the country which won the most medals in summer Olympics and the country which won the most medals in winter Olympics.
-
 SELECT c.name, csm.seasonName
 FROM Countries c
 JOIN	(SELECT t.iocCode, g.seasonName, COUNT(*) mc

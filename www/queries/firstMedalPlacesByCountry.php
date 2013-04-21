@@ -53,7 +53,8 @@ JOIN	(SELECT cgy.iocCode, cgy.seasonName, cgy.minYear
 		HAVING COUNT(*) = 1) oneSeason
 	ON cgy.iocCode = oneSeason.iocCode
 	WHERE cgy.seasonName = 'Summer' OR oneSeason.iocCode IS NOT NULL ) csy
-ON ctry.iocCode = csy.iocCode AND g0.seasonName = csy.seasonName AND g0.year = csy.minYear')
+ON ctry.iocCode = csy.iocCode AND g0.seasonName = csy.seasonName AND g0.year = csy.minYear');
+	$qry->execute();
 }
 catch (Exception $e)
 {

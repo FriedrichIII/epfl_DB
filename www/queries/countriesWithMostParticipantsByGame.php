@@ -23,7 +23,8 @@ JOIN	(SELECT gca2.gameID, MAX(gca2.ac) am
 		ON t2.eventID = e2.eventID
 		GROUP BY e2.gameID, t2.iocCode) gca2
 	GROUP BY gca2.gameID) gam
-ON gca.gameID = gam.gameID AND gca.ac = gam.am')
+ON gca.gameID = gam.gameID AND gca.ac = gam.am');
+	$qry->execute();
 }
 catch (Exception $e)
 {

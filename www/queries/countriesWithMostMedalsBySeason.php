@@ -27,7 +27,8 @@ JOIN	(SELECT csm2.seasonName, MAX(csm2.mc) mm
 		ON e2.gameID = g2.gameID
 		GROUP BY t2.iocCode, g2.seasonName) csm2
 	GROUP BY csm2.seasonName) smm
-ON csm.seasonName = smm.seasonName AND csm.mc = smm.mm')
+ON csm.seasonName = smm.seasonName AND csm.mc = smm.mm');
+	$qry->execute();
 }
 catch (Exception $e)
 {

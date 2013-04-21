@@ -24,7 +24,8 @@ WHERE t.rank = 1 AND s.sportID in
 	JOIN Sports s2
 	ON d2.sportID = s2.sportID
 	GROUP BY s2.sportID
-	HAVING COUNT(DISTINCT e2.gameID) = 1)')
+	HAVING COUNT(DISTINCT e2.gameID) = 1)');
+	$qry->execute();
 }
 catch (Exception $e)
 {

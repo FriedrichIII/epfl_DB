@@ -11,7 +11,8 @@ LEFT OUTER JOIN
 	FROM Team t
 	WHERE t.rank > 0 and t.rank < 4) Oc
 ON c.iocCode = Oc.iocCode
-WHERE Oc.iocCode IS NULL')
+WHERE Oc.iocCode IS NULL');
+	$qry->execute();
 }
 catch (Exception $e)
 {

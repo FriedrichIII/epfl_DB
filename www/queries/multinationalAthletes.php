@@ -12,7 +12,8 @@ JOIN 	(SELECT DISTINCT m.athleteID
 	ON m.teamID = t.teamID
 	GROUP BY m.athleteID
 	HAVING COUNT(DISTINCT t.iocCode) > 1 ) m2
-ON a.athleteID = m2.athleteID')
+ON a.athleteID = m2.athleteID');
+	$qry->execute();
 }
 catch (Exception $e)
 {
