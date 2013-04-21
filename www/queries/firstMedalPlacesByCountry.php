@@ -2,7 +2,8 @@
 <?php
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=olympics', 'root', '');
+	include 'config.php';
+	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	$qry = $db->prepare('
 SELECT ctry.name, ct.name
 FROM Countries ctry, Games g0
@@ -52,7 +53,7 @@ JOIN	(SELECT cgy.iocCode, cgy.seasonName, cgy.minYear
 		GROUP BY cgy3.iocCode
 		HAVING COUNT(*) = 1) oneSeason
 	ON cgy.iocCode = oneSeason.iocCode
-	WHERE cgy.seasonName = 'Summer' OR oneSeason.iocCode IS NOT NULL ) csy
+	WHERE cgy.seasonName = \'Summer\' OR oneSeason.iocCode IS NOT NULL ) csy
 ON ctry.iocCode = csy.iocCode AND g0.seasonName = csy.seasonName AND g0.year = csy.minYear');
 	$qry->execute();
 }

@@ -1,7 +1,8 @@
 
 <?php
-$id =  $_GET['id'];
-$db = new PDO('mysql:host=localhost;dbname=olympics', 'root', '');
+include 'config.php';
+$id = $_GET['id'];
+$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 
 $qry = $db->prepare('
 SELECT s.name AS sname
