@@ -1,7 +1,7 @@
 --F. List names of all athletes who competed for more than one country.
 SELECT a.name
 FROM Athletes a
-JOIN 	(SELECT m.athleteID
+JOIN 	(SELECT DISTINCT m.athleteID
 	FROM Membership m
 	JOIN Teams t
 	ON m.teamID = t.teamID
