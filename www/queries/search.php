@@ -8,6 +8,7 @@ p{margin:0;
 
 
 <?php
+include 'config.php';
 $origTxt = $_GET['search_field'];
 
 $txt = '%' . $origTxt . '%';
@@ -22,7 +23,11 @@ $termsCount = count($terms);
 <?php
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=olympics', 'root', '');
+	/////////////////////
+	// QUERY EXECUTION //
+	/////////////////////
+	
+	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	
 	$paramsList = array();
 	$qry = $db->prepare('
@@ -173,17 +178,24 @@ ORDER BY matches DESC;
 	bindParams($qry, $paramsList);
 	$qry->execute();
 
-	$title = false;
+	
+	/////////////////////
+	// DISPLAY RESULTS //
+	/////////////////////
+	
 	while($data = $qry->fetch())
 	{
 		$percent = intval(min(100, $data['matches'] / $termsCount * 100));
-		echo("<p style=\"font-size:" . 3 * sqrt($percent) . "px\" topmargin=\"0\">" . $data['text'] . " - <i>" . $percent . "%</i></p>");
+		$sizeInfo = 'style="font-size:' . 3 * sqrt($percent) . 'px"';
+		$url = 'href="details-' . $data['type'] . '.php?'.http_build_query(array('id' => $data['id'])) . '"';
+		echo("<p" . $sizeInfo . "><a " . $url . ">" . $data['text'] . "</a> - <i>" . $percent . "%</i></p>");
 	}
 
 
-// TODO special medal search
+// TODO special medal search ?
 
-
+	// Close database
+	$db = null;
 
 }
 catch (Exception $e)
