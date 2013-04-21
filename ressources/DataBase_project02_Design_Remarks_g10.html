@@ -1,0 +1,87 @@
+<p>Antoine Morand, Valerian Pittet, Pascal Cudre</p>
+<h1>
+	DESIGN REMARKS</h1>
+<h2>
+	Required extra checks</h2>
+<h4>
+	Membership table</h4>
+<p>
+	When adding an athlete to the Membership table, one needs to check</p>
+<ul>
+	<li>
+		that the athlete does not have two teams representing different countries for the same games.</li>
+	<li>
+		that the ahtlete is not a member of two different teams participating in the same event.</li>
+</ul>
+<p>
+	As the given data don&#39;t indicate what events was a team competition and what was not, we just put each athlete in a team.</p>
+<h2>
+	Design Choices</h2>
+<h4>
+	Team table</h4>
+<p>
+	The use of team table allows the management of a team recieving a medal (rather than giving a medal to each athlete of the team, in football teams for example).</p>
+<p>
+	This solution can still be used for an athlete to participate alone, being a team of one persone.</p>
+<p>
+	We also choose to make a team represent a country. By this way we can manage cases where athletes participate to several games for different countries (change of country or country modification like USSR, Yougoslavia etc.). The disavantage of this solution is to have to check that an athlete does not represents differents countries for the same games or takes part to the same event in different teams.</p>
+<p>
+	We decided to use a team table with whole ranking instead of recording medals. Even if it takes more space, it provides an intrinsic coherence (and more information).</p>
+<p>
+	With common constraints and the ones described above, we can avoid that:</p>
+<ul>
+	<li>
+		more than one medal of each kind being attributed unless there is an ex aequo.</li>
+	<li>
+		a medal is not attributed</li>
+	<li>
+		a medal is attributed to someone that did not participate to the event</li>
+</ul>
+<h4>
+	IOC code</h4>
+<p>
+	We assume that each country has an ioc code and that it is unique. This allows us to use it as an index for the countries table. We invented ioc when none was existing.</p>
+<h4>
+	No cascade behaviour for foreign keys</h4>
+<p>
+	We left the default (restrict) behaviour for our foreign key. The reason is that there is a good reason to add cascade (e.g. between participation and event or between discipline and sport), the risk of deleting a lot of data is not balanced by the ease of using cascade. Moreover, there is practically no reason to delete elements in this table since it&#39;s role is mostly to record an history of olympic games.</p>
+<h4>
+	Enum-like entities</h4>
+<p>
+	Season and Sport entities are very simple tables that just restrict the choice of values in Games resp. Discipline tables.</p>
+<h2>
+	INSTALL</h2>
+<p>
+	1. Make sure you have a local mysql database and php server (e.g. using wamp-like software).<br />
+	&nbsp;&nbsp; If you have custom database connection info, modify the queries/config.php accordingly.<br />
+	2. Run the table creation script. (olympics.sql, the creation scripts are also included in the data scripts just in case)<br />
+	3. Run the views creation script.(view.sql)<br />
+	4. Run the data importation scripts in the following order:<br />
+	&nbsp;&nbsp; &nbsp;- season.sql, sports.sql, athletes.sql, countries.sql<br />
+	&nbsp;&nbsp; &nbsp;- cities.sql, discipline.sql<br />
+	&nbsp;&nbsp; &nbsp;- games.sql<br />
+	&nbsp;&nbsp; &nbsp;- events.sql<br />
+	&nbsp;&nbsp; &nbsp;- teams.sql<br />
+	&nbsp;&nbsp; &nbsp;- membership.sql<br />
+	5. Put the &quot;index.php&quot; file and the &quot;queries&quot; somewhere in the www<br />
+	&nbsp;&nbsp; directory of your php server.<br />
+	&nbsp; &nbsp;<br />
+	6. Open the &quot;index.php&quot; page.<br />
+	&nbsp;</p>
+<h3>
+	Use</h3>
+<p>
+	1. Use the search text field to look for what you want then follow hyperlinks to navigate<br />
+	&nbsp;&nbsp; through informations.<br />
+	<br />
+	&nbsp;&nbsp; or<br />
+	&nbsp; &nbsp;<br />
+	2. Use special queries links to access special queries information.</p>
+<p>
+	&nbsp;</p>
+<p>
+	<strong>Remarks</strong></p>
+<p>
+	The database structure has not changed from the project 01, but we used the &quot;auto-increment&quot;&nbsp; function of mysql.</p>
+<p>
+	The ranking rule is like that : 1 = gold medal, 2 = silver, 3 = bronze, 4+ = other ranks without medal, but we didn&#39;t have them in the given data, so we put some random data to see how it worked. If we wanted to signal a disqualification, we could put a -1 in the rank. Equalities should be managed by hand.</p>
