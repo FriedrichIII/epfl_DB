@@ -58,8 +58,8 @@ for ($i = 0; $i < $size; $i++) {
 	// rank
 	if ($prevEID != $r['eID']) {
 		$prevEID = $r['eID'];
-		echo('<a href="details-e.php?id="' . $r['eID'] . '"><b>' . $r['sname'] .
-		 ' ' . $r['dname'] . ' ' . $r['ename'] . '</b><br />');
+		echo('<a href="details-e.php?id=' . $r['eID'] . '"><b>' . $r['sname'] .
+		 ' ' . $r['dname'] . ' ' . $r['ename'] . '</b></a><br />');
 	}
 	
 	// Athlete
