@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<cloudbees-web-app xmlns="http://www.cloudbees.com/xml/webapp/1">     
+    <appid>FriedrichIII/Olympics</appid>
+    <context-param>
+        <param-name>application.environment</param-name>
+        <param-value>prod</param-value>
+    </context-param>
+<!--
+	<resource name="jdbc/olympics" auth="Container" type="javax.sql.DataSource">
+    <param name="username" value="g10" />
+    <param name="url" value="jdbc:ec2-23-21-211-172.compute-1.amazonaws.com />
+    <param name="password" value="g10" />
+  </resource>
+-->	
+</cloudbees-web-app>
