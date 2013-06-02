@@ -51,10 +51,10 @@ JOIN Co_BronzeCnt Br ON Gd.ioccode = Br.ioccode;
 CREATE OR REPLACE VIEW Co_to10Pos AS
 SELECT CM1.ioccode
 FROM Co_medals CM1
-JOIN Co_medals CM2 ON CM1.ioccode = CM2.ioccode
-	AND (CM1.gold <= CM2.gold OR
+JOIN Co_medals CM2 
+ON 	CM1.gold <= CM2.gold OR
 	(CM1.gold = CM2.gold AND CM1.silver <= CM2.silver) OR
-	(CM1.gold = CM2.gold AND CM2.silver = CM2.silver AND CM1.bronze <= CM2.bronze))
+	(CM1.gold = CM2.gold AND CM2.silver = CM2.silver AND CM1.bronze <= CM2.bronze)
 GROUP BY CM1.ioccode
 HAVING COUNT(*) <= 10;
 
