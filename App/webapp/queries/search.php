@@ -1,11 +1,14 @@
-
+<!DOCTYPE html>
+<html>
 <head>
+<link rel="stylesheet" type="text/css" href="../styles.css">
 <style type="text/css">
 p{margin:0;
 }
 </style>
-</head>
-
+</head> 
+<body>
+<div id="main">
 
 <?php
 include 'config.php';
@@ -228,3 +231,6 @@ function bindParams($req, $paramsList) {
 	}
 }
 ?>
+</div>
+</body>
+</html> 

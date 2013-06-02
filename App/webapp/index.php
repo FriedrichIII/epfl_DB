@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head> 
+<body>
+<div id="main">
+
 <h1>Olympic stats</h1>
 
 <form action="queries/search.php" method="get">
@@ -18,3 +26,7 @@
 <li><a href="queries/countriesWithMostParticipantsByGame.php">countries with most participants by game</a></li>
 <li><a href="queries/medallessCountries.php"                 >medalless countries</a></li>
 </ol>
+
+</div>
+</body>
+</html> 
