@@ -1,2 +1,13 @@
 SELECT tm.teamID, tm.iocCode, tm.eventID, tm.rank FROM `tmp_medals` as tm
 SELECT te.teamID, ath.athleteID FROM `teams` as te, athletes as ath WHERE te.team = ath.name
+SELECT te.teamID, ath.athleteID FROM teams as te JOIN athletes as ath ON te.team = ath.name
+//chopper la carriere de Vreni Schneider
+SELECT ath.name, evt.name, te.rank
+FROM athletes AS ath
+JOIN memberships AS mem ON ath.athleteID = mem.athleteID
+JOIN teams AS te ON te.teamID = mem.teamID
+JOIN EVENTS AS evt ON te.eventID = evt.eventID
+WHERE ath.name = 'Vreni Schneider'
+
+// ajouter primary key
+ALTER TABLE memberships ADD PRIMARY KEY(teamID,athleteID)
