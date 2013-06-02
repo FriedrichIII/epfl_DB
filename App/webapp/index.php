@@ -5,6 +5,8 @@
 <input type="submit" value="Search">
 </form>
 
+<p>&rarr; <a href="insertions/index.php">Insert data</a></p>
+
 <h3>Special queries:</h3>
 <ol>
 <li><a href="queries/multiseasonMedalists.php"               >multi-season medalists</a></li>
