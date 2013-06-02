@@ -1,0 +1,2 @@
+SELECT tm.teamID, tm.iocCode, tm.eventID, tm.rank FROM `tmp_medals` as tm
+SELECT te.teamID, ath.athleteID FROM `teams` as te, athletes as ath WHERE te.team = ath.name
