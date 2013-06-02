@@ -1,8 +1,8 @@
---Compute medal table for the specific Olympic Games supplied by the user. Medal table should contain 
---country’s IOC code followed by the number of gold, silver, bronze and total medals. It should first be 
---sorted by the number of gold, then silvers and finally bronzes.
+-- Compute medal table for the specific Olympic Games supplied by the user. Medal table should contain 
+-- country’s IOC code followed by the number of gold, silver, bronze and total medals. It should first be 
+-- sorted by the number of gold, then silvers and finally bronzes.
 
---create medal table by game for each game, need to add clause WHERE g.year = $user-year AND g.season = $user-season
+-- create medal table by game for each game, need to add clause WHERE g.year = $user-year AND g.season = $user-season
 SELECT Ga.year, Ga.seasonName, Ci.name AS cityName, goldTab.ioccode, goldTab.goldCount, silverTab.silverCount, bronzeTab.bronzeCount
 FROM	(SELECT gold_Ga.gameID, gold_Co.ioccode, COUNT(*) AS goldCount
 	FROM countries gold_Co
