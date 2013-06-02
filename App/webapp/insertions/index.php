@@ -1,4 +1,4 @@
-<h3>Insert...</h3>
+<h3>Insert/Delete...</h3>
 <ol>
 <li><a href="athleteForm.php"       >athlete</a></li>
 <li><a href="cityForm.php"          >city</a></li>

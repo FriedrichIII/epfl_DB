@@ -12,7 +12,7 @@ p{margin:0;
 
 <?php
 include 'config.php';
-$origTxt = $_GET['search_field'];
+$origTxt = str_replace("'", "''", $_GET['search_field']);
 
 $txt = '%' . $origTxt . '%';
 
@@ -174,7 +174,8 @@ SELECT id, type, text, matches FROM
 	GROUP BY gID
 	
 ) found
-ORDER BY matches DESC;
+ORDER BY matches DESC
+LIMIT 100;
 
 	');
 	
