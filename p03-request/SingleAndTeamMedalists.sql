@@ -16,12 +16,12 @@ WHERE Te.rank < 4 AND Te.rank > 0
 GROUP BY Te.teamID
 HAVING COUNT(DISTINCT Me.athleteID) = 1;
 
-CREATE OR REPLACE VIEW SingleMedalistsAthlete AS
+CREATE OR REPLACE VIEW TeamMedalistsAthlete AS
 SELECT Me.athleteID
 FROM memberships Me
 JOIN TeamMedalists TM ON Me.teamID = TM.teamID;
 
-CREATE OR REPLACE VIEW TeamMedalistsAthlete AS
+CREATE OR REPLACE VIEW SingleMedalistsAthlete AS
 SELECT Me.athleteID
 FROM memberships Me
 JOIN SingleMedalists SM ON Me.teamID = SM.teamID;
