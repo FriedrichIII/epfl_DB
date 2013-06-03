@@ -1,5 +1,5 @@
 <?php include '../includes/header.php'; ?>
-<h1>3 Mos Medal by Sport</h1>
+<h1>Three Nations with Most Medals by Sport</h1>
 <?php
 try
 {
