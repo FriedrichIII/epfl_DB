@@ -36,13 +36,13 @@ a:hover{
 #home, #top{
 	font-weight : bold;
 	padding: 8px 12px 8px 12px;
-	background-color : #2f2f2f;
+	background-color : #333;
 	border-radius:4px;
 	float:right;
 	
 }
 #home:hover, #top:hover{
-	background-color : #444;
+	background-color : #555;
 }
 .spacer{
 	clear:both;
