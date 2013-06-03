@@ -9,5 +9,4 @@
 <li><a href="sportForm.php"         >sport</a></li>
 <li><a href="teamForm.php"          >team</a></li>
 </ol>
-<a href="../index.php">back...</a>
 <?php include '../includes/footer.php'; ?>
