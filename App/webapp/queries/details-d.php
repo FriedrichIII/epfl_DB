@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 
@@ -89,4 +89,4 @@ $db = null;
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
-
+<?php include '../includes/footer.php'; ?>

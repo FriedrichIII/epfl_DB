@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 
@@ -22,6 +22,7 @@ $name = $res['sname'] . ' ' . $res['dname'] . ' ' . $res['ename'] . ' ' . $res['
 ?>
 
 <h1>Details for Event "<?php echo($name)?>":</h1>
+
 
 
 <h3>Medalists:</h3>
@@ -66,4 +67,4 @@ $db = null;
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
-
+<?php include '../includes/footer.php'; ?>

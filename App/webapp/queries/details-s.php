@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 
@@ -47,6 +47,7 @@ echo(implode('<br />', $games));
 
 <h3>Medalists:</h3>
 
+
 <?php
 $medals = array(1 => 'Gold', 2 => 'Silver', 3 => 'Bronze');
 
@@ -89,4 +90,4 @@ $db = null;
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
-
+<?php include '../includes/footer.php'; ?>

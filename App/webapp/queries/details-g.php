@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 $id = $_GET['id'];
@@ -73,4 +73,4 @@ $db = null;
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
-
+<?php include '../includes/footer.php'; ?>

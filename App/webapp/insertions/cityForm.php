@@ -1,3 +1,6 @@
+<?php
+	include '../includes/header.php';
+?>
 <h3>Insert city:</h3>
 <form action="execute.php" method="get">
 <p>
@@ -8,3 +11,4 @@ country code: <input type="text" name="country_code_field">
 <input type="submit" name="action" value="Insert">
 <input type="submit" name="action" value="Delete">
 </form>
+<?php include '../includes/footer.php'; ?>

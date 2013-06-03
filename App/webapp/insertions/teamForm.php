@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <h3>Insert team:</h3>
 <form action="execute.php" method="get">
 <p>
@@ -13,3 +14,4 @@ rank: <input type ="text" name="rank_field"><br />
 <input type="submit" name="action" value="Insert">
 <input type="submit" name="action" value="Delete">
 </form>
+<?php include '../includes/footer.php'; ?>

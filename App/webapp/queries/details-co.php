@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 try {
@@ -144,3 +144,4 @@ $db = null;
 }
 ?>
 
+<?php include '../includes/footer.php'; ?>

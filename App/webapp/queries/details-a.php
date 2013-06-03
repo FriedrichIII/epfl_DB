@@ -1,4 +1,4 @@
-
+<?php include '../includes/header.php'; ?>
 <?php
 include 'config.php';
 $id =  $_GET['id'];
@@ -134,3 +134,4 @@ try {
 }
 
 ?>
+<?php include '../includes/footer.php'; ?>
