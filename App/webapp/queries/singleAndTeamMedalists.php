@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <h1>Single and Team Medalists</h1>
 <?php
 try
@@ -50,3 +51,4 @@ catch (Exception $e)
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
+<?php include '../includes/footer.php'; ?>

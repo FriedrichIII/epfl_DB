@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <h3>Choose a game:</h3>
 <form action="medalTableByGame.php" method="get">
 <p>
@@ -7,3 +8,4 @@ season: <input type="radio" name="season" value="Summer"> Summer
 </p>
 <input type="submit" value="Show">
 </form>
+<?php include '../includes/footer.php'; ?>
