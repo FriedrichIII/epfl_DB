@@ -33,6 +33,20 @@ a:visited{
 a:hover{
 	color:#55b5e5;
 }
-#home{
+#home, #top{
+	font-weight : bold;
+	padding: 8px 12px 8px 12px;
+	background-color : #2f2f2f;
+	border-radius:4px;
 	float:right;
+	
+}
+#home:hover, #top:hover{
+	background-color : #444;
+}
+.spacer{
+	clear:both;
+}
+#top{
+	clear-after:both;
 }
