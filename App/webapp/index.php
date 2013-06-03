@@ -25,19 +25,19 @@
 <li><a href="queries/multinationalAthletes.php"              >F. multinational athletes</a></li>
 <li><a href="queries/countriesWithMostParticipantsByGame.php">G. countries with most participants by game</a></li>
 <li><a href="queries/medallessCountries.php"                 >H. medalless countries</a></li>
-<li><a href="queries/_I_medalTableByGame.php"                >I. medals table for specific game</a></li>
-<li><a href="queries/_J_3mostMedalBySport.php"               >J. three nations with most medals by sport</a></li>
-<li><a href="queries/_K_homeCrowdMostBenefit.php"            >K. nation with most home crowd benefit</a></li>
-<li><a href="queries/_L_top10TeamSport.php"                  >L. top ten nations for team sports</a></li>
-<li><a href="queries/_M_multinationalMedalist.php"           >M. multinational medalists</a></li>
-<li><a href="queries/_N_goldSilverBronzeNationStarter.php"   >N. first medal type by nation</a></li>
-<li><a href="queries/_O_longestMedalWaitByDiscipline.php"    >O. longest medal wait by discipline</a></li>
-<li><a href="queries/_P_eventsMedalIn1Country.php"           >P. events medal in one country</a></li>
-<li><a href="queries/_Q_largestPercentageMedalPerGame.php"   >Q. largest percentage medal per game</a></li>
-<li><a href="queries/_R_mostSuccessfulCountryBySport.php"    >R. most sucessful country by sport</a></li>
-<li><a href="queries/_S_singleAndTeamMedalists.php"          >S. single and team medalists</a></li>
-<li><a href="queries/_T_goldInTeamNotGoldSingle.php"         >T. gold in team but not in single</a></li>
-<li><a href="queries/_V_top10FirstApparition.php"            >V. top ten first apparition</a></li>
+<li><a href="queries/medalTableByGameInput.php"              >I. medals table for specific game</a></li>
+<li><a href="queries/3mostMedalBySport.php"                  >J. three nations with most medals by sport</a></li>
+<li><a href="queries/homeCrowdMostBenefit.php"               >K. nation with most home crowd benefit</a></li>
+<li><a href="queries/top10TeamSport.php"                     >L. top ten nations for team sports</a></li>
+<li><a href="queries/multinationalMedalist.php"              >M. multinational medalists</a></li>
+<li><a href="queries/goldSilverBronzeNationStarter.php"      >N. first medal type by nation</a></li>
+<li><a href="queries/longestMedalWaitByDiscipline.php"       >O. longest medal wait by discipline</a></li>
+<li><a href="queries/eventsMedalIn1Country.php"              >P. events medal in one country</a></li>
+<li><a href="queries/largestPercentageMedalPerGame.php"      >Q. largest percentage medal per game</a></li>
+<li><a href="queries/mostSuccessfulCountryBySport.php"       >R. most sucessful country by sport</a></li>
+<li><a href="queries/singleAndTeamMedalists.php"             >S. single and team medalists</a></li>
+<li><a href="queries/goldInTeamNotGoldSingle.php"            >T. gold in team but not in single</a></li>
+<li><a href="queries/top10FirstApparition.php"               >V. top ten first apparition</a></li>
 
 
 
