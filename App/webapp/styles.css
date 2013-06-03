@@ -33,3 +33,6 @@ a:visited{
 a:hover{
 	color:#55b5e5;
 }
+#home{
+	float:right;
+}

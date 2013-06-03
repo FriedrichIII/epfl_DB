@@ -1,1 +1,1 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="../styles.css"></head> <body><div id="main">
+<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="../styles.css"></head> <body><div id="main"><a id="home" href="../index.php">HOME</a>
