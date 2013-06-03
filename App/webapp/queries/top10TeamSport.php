@@ -1,4 +1,4 @@
-<h1>First Medal Places by Country</h1>
+<h1>Top 10 Team Sport</h1>
 <?php
 try
 {
@@ -45,7 +45,7 @@ try
 	
 	while($data = $qry->fetch())
 	{
-		echo($data['countryName'] . ': ' . $data['avgTeamMedalistCount'] . ')<br />');
+		echo($data['countryName'] . ': ' . $data['avgTeamMedalistCount'] . '<br />');
 	}
 }
 catch (Exception $e)

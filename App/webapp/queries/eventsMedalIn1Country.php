@@ -1,4 +1,4 @@
-<h1>First Medal Places by Country</h1>
+<h1>Events with all medals in one country</h1>
 <?php
 try
 {
@@ -20,7 +20,7 @@ try
 	
 	while($data = $qry->fetch())
 	{
-		echo($data['eventName'] . ')<br />');
+		echo($data['eventName'] . '<br />');
 	}
 }
 catch (Exception $e)
