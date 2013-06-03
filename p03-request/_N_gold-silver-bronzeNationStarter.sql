@@ -15,7 +15,7 @@ CREATE OR REPLACE VIEW Co_firstMedals AS
 SELECT Me_1.ioccode, Me_1.rank
 FROM Se_Ye_Co_Medal Me_1
 LEFT OUTER JOIN Se_Ye_Co_Medal Me_2
-ON (Me_1.year > Me_2.year OR (Me_1.year = Me_2.year AND Me_1.seasonName > Me_2.seasonName))
+ON Me_1.ioccode = Me_2.ioccode AND (Me_1.year > Me_2.year OR (Me_1.year = Me_2.year AND Me_1.seasonName > Me_2.seasonName))
 WHERE Me_2.year IS NULL;
 
 CREATE OR REPLACE VIEW Co_firstMedal AS
