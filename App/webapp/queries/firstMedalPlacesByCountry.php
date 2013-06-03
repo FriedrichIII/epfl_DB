@@ -7,26 +7,36 @@ try
 	$db = new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME, $DATABASE_LOGIN, $DATABASE_PASSWORD);
 	$qry = $db->prepare('
 	
-	SELECT co.name AS coname, ci.name AS ciname, g.year
-	FROM countries co
-	INNER JOIN teams t ON co.iocCode = t.iocCode
-	INNER JOIN events e ON e.eventID = t.eventID
-	INNER JOIN games g ON g.gameID = e.gameID
-	INNER JOIN cities ci ON ci.cityID = g.cityID
-	WHERE CONCAT(g.year, co.iocCode) in
-		(SELECT CONCAT(MIN(g2.year), t2.iocCode)
-		FROM teams t2
-		INNER JOIN events e2 ON e2.eventID = t2.eventID
-		INNER JOIN games g2 ON g2.gameID = e2.gameID
-		GROUP BY t2.iocCode)
-	ORDER BY co.name
-	
+	SELECT Co.name AS coname, Ci.name AS ciname
+	FROM countries Co
+	JOIN	(SELECT CoGa_1.ioccode, CoGa_1.cityID
+		FROM 	(SELECT DISTINCT CoTe_1.ioccode, Ga_1.year, Ga_1.seasonName, Ga_1.cityID
+			FROM	(SELECT Co_1.ioccode, Te_1.eventID
+				FROM countries Co_1 JOIN teams Te_1
+				ON Te_1.ioccode = Co_1.ioccode
+				WHERE Te_1.rank > 4) CoTe_1
+			JOIN events Ev_1 ON CoTe_1.eventID = Ev_1.eventID
+			JOIN games Ga_1 ON Ga_1.gameID = Ev_1.gameID) CoGa_1
+		LEFT OUTER JOIN
+			(SELECT DISTINCT CoTe_2.ioccode, Ga_2.year, Ga_2.seasonName, Ga_2.cityID
+			FROM	(SELECT Co_2.ioccode, Te_2.eventID
+				FROM countries Co_2 JOIN teams Te_2
+				ON Te_2.ioccode = Co_2.ioccode
+				WHERE Te_2.rank > 4) CoTe_2
+			JOIN events Ev_2 ON CoTe_2.eventID = Ev_2.eventID
+			JOIN games Ga_2 ON Ga_2.gameID = Ev_2.gameID) CoGa_2
+			-- is earlyer: t1.year < t2.year or (t1.year = t2.year and t1.seasonName < t2.seasonName)
+		ON (CoGa_1.ioccode = CoGa_2.ioccode AND (CoGa_1.year > CoGa_2.year OR (CoGa_1.year = CoGa_2.year AND CoGa_1.seasonName > CoGa_2.seasonName)))
+		WHERE CoGa_2.ioccode IS NULL) CoGa
+	ON Co.ioccode = CoGa.ioccode
+	JOIN cities Ci ON Ci.cityId = CoGa.cityID
+		
 	');
 	$qry->execute();
 	
 	while($data = $qry->fetch())
 	{
-		echo($data['coname'] . ': ' . $data['ciname'] . ' (' . $data['year'] . ')<br />');
+		echo($data['coname'] . ': ' . $data['ciname'] . '<br />');
 	}
 }
 catch (Exception $e)
