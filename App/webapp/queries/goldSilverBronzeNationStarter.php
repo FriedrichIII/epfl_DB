@@ -28,14 +28,14 @@ try
 	ON (FM_1.rank > FM_2.rank)
 	WHERE FM_2.ioccode IS NULL;
 
-	SELECT Co.name AS country, CASE FM.rank WHEN 1 THEN 'Gold' WHEN 2 THEN 'Silver' WHEN 3 THEN 'Bronze' ELSE 'ERROR' END AS firstMedal
+	SELECT Co.name AS country, CASE FM.rank WHEN 1 THEN \'Gold\' WHEN 2 THEN \'Silver\' WHEN 3 THEN \'Bronze\' ELSE \'ERROR\' END AS firstMedal
 	FROM countries Co
 	JOIN Co_firstMedal FM ON Co.ioccode = FM.ioccode
 	ORDER BY FM.rank ASC
 	
 	');
 	$qry->execute();
-	
+	echo($qry->queryString);
 	while($data = $qry->fetch())
 	{
 		echo($data['country'] . ': ' . $data['firstMedal'] . '<br />');
