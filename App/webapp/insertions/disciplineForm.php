@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <h3>Insert discipline:</h3>
 <form action="execute.php" method="get">
 <p>
@@ -8,3 +9,4 @@ sport: <input type="text" name="sport_field">
 <input type="submit" name="action" value="Insert">
 <input type="submit" name="action" value="Delete">
 </form>
+<?php include '../includes/footer.php'; ?>

@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <h1>First Medal Places by Country</h1>
 <?php
 try
@@ -33,3 +34,4 @@ catch (Exception $e)
 	die('Could not open database, error: ' . $e->getMessage());
 }
 ?>
+<?php include '../includes/footer.php'; ?>

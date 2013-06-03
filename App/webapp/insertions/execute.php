@@ -1,3 +1,4 @@
+<?php include '../includes/header.php'; ?>
 <?php
 
 //TODO add error test: qry->errorCode() === '00000'
@@ -554,3 +555,4 @@ function myEscape($input) {
 ?>
 <br />
 <a href="index.php">back...</a>
+<?php include '../includes/footer.php'; ?>

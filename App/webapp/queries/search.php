@@ -232,6 +232,4 @@ function bindParams($req, $paramsList) {
 	}
 }
 ?>
-</div>
-</body>
-</html> 
+<?php include '../includes/footer.php'; ?>
